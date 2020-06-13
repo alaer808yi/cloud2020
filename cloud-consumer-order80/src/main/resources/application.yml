@@ -1,0 +1,36 @@
+server:
+  port: 80
+  servlet:
+    context-path: /order
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+      enabled: true
+    info:
+      enabled: true
+
+spring:
+  application:
+    name: cloud-order-service80
+
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetchRegistry: true
+    service-url:
+      defaultZone: http://127.0.0.1:7001/eureka,http://localhost:7002/eureka
+
+  instance:
+    instance-id: order80
+    prefer-ip-address: true
+    ##向服务端发送心跳时间间隔 秒
+    lease-expiration-duration-in-seconds: 1
+    ##服务端收到服务上一次心跳等待时间 秒
+    lease-renewal-interval-in-seconds: 2

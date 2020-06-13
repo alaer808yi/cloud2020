@@ -1,5 +1,5 @@
 server:
-  port: 8001
+  port: 8002
   servlet:
     context-path: /payment
 
@@ -35,11 +35,10 @@ eureka:
     register-with-eureka: true
     fetchRegistry: true
     service-url:
-      ##注册在多个eureka上
       defaultZone: http://127.0.0.1:7001/eureka,http://localhost:7002/eureka
 
   instance:
-    instance-id: payment8001
+    instance-id: payment8002
     prefer-ip-address: true
     ##向服务端发送心跳时间间隔
     lease-expiration-duration-in-seconds: 1

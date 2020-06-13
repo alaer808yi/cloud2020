@@ -1,0 +1,20 @@
+server:
+  port: 7002
+
+eureka:
+  instance:
+    hostname: localhost
+
+  client:
+    ##false不向eureka注册自己
+    register-with-eureka: false
+    ##false表示自己就是注册中心，维护实例，不检索服务
+    fetch-registry: false
+    service-url:
+      ##http://${eureka.instance.hostname}:${server.port}/eureka/ 找到另外的eureka,如果有更多，用','分隔开
+      defaultZone: http://127.0.0.1:7001/eureka/
+  server:
+    ##关闭自我保护
+    enable-self-preservation: false
+    ## 清理无效服务时间间隔 单位毫秒
+    eviction-interval-timer-in-ms: 2000
