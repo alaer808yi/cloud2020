@@ -1,6 +1,5 @@
 package com.longjing.springcloud.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.longjing.springcloud.entities.CommonResult;
 import com.longjing.springcloud.entities.Payment;
@@ -9,6 +8,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * @ Author     ：jane.
@@ -39,7 +41,7 @@ public class PaymentController {
         ObjectMapper mapper = new ObjectMapper();
 
         log.info("payment:{} find", mapper.writeValueAsString(payment));
-        return new CommonResult<Payment>("200","success"+port,payment);
+        return new CommonResult<Payment>("200", "success" + port, payment);
     }
 
     @RequestMapping(value = "/save/{serial}", method = RequestMethod.POST)
@@ -48,13 +50,15 @@ public class PaymentController {
         payment.setSerial(serial);
         int i = paymentService.save(payment);
         log.info("insert {} data", i);
-        return new CommonResult<Payment>("200", "成功"+port, payment);
+        return new CommonResult<Payment>("200", "成功" + port, payment);
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public CommonResult<Payment> test4(@RequestBody Payment payment) {
         int i = paymentService.save(payment);
         log.info("insert {} data", i);
-        return new CommonResult<Payment>("200", "成功"+port, payment);
+        return new CommonResult<Payment>("200", "成功" + port, payment);
     }
+
+
 }
